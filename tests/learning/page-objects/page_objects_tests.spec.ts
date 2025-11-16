@@ -10,3 +10,9 @@ test("Page Objects Tests", async ({ page }) => {
   await loginPage.fillPassword("Playwright321!");
   await loginPage.clickLogin();
 });
+
+test("Page Objects - Grouped Steps", async ({ page }) => {
+  const loginPage = new LoginPage(page);
+  await loginPage.open();
+  await loginPage.login("pw_academy", "Playwright321!");
+});

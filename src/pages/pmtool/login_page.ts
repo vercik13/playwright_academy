@@ -7,12 +7,14 @@ export class LoginPage {
   readonly usernameInput: Locator;
   readonly passwordInput: Locator;
   readonly loginButton: Locator;
+  readonly passwordForgottenAnchor: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.usernameInput = page.locator("#username");
     this.passwordInput = page.locator("#password");
     this.loginButton = page.locator(".btn");
+    this.passwordForgottenAnchor = page.locator("#forget_password");
   }
 
   async open() {
@@ -29,6 +31,10 @@ export class LoginPage {
 
   async clickLogin() {
     await this.loginButton.click();
+  }
+
+  async clickPasswordForgotten() {
+    await this.passwordForgottenAnchor.click();
   }
 
   async login(username: string, password: string) {
