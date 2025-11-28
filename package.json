@@ -2,7 +2,10 @@
   "name": "playwright_academy",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "ui": "playwright test --ui",
+    "test": "plywright test"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vercik13/playwright_academy.git"
