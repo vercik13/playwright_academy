@@ -29,7 +29,7 @@ export class DashboardPage {
 
   async dashboardAsserts(appName: string) {
     await expect
-      .soft(this.profileButton, "Profile Button is Visible")
+      .soft(this.profileButton, "Profile Button is Visible") // ? soft znamena, že je to případně měkká chyby, nejsou to blokační chyby, Text v "uvozovkách" je moje zpráva, která se mi v reportu zobrazí - užitečné kvůli čitelnosti reportu
       .toBeVisible();
     await expect
       .soft(this.appNameHeader, "Application Header have Name")
