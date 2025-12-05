@@ -48,16 +48,17 @@ export default defineConfig({
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
     },
-    {
-      name: "chromium: low-res",
-      use: {
-        ...devices["Desktop Chrome"],
-        viewport: {
-          width: 800,
-          height: 600,
-        },
-      },
-    },
+    // * Příklad nastavení vlastního projektu s nízkým rozlišením
+    //{
+    //  name: "chromium: low-res",
+    //  use: {
+    //    ...devices["Desktop Chrome"],
+    //    viewport: {
+    //      width: 800,
+    //        height: 600,
+    //    },
+    //  },
+    //},
     /*
     {
       name: "firefox",
