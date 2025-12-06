@@ -10,9 +10,9 @@ test.describe("Forms Actions", () => {
     const nameInput = page.locator("#name");
     await nameInput.fill("Start");
     await nameInput.fill("End"); // * Tento fill by měl vymazat předchozí text "Start"
-    await nameInput.pressSequentially("Kde toto bude?"); // * Nevymaže předchozí text "End"
-    await nameInput.clear(); // * Vyčistí hodnotu pole
-    await nameInput.pressSequentially("Dlouhý text...", { delay: 200 });
+    await nameInput.pressSequentially("Kde toto bude?"); // * Nevymaže předchozí text "End", napíše se až za "End", nevymaže předchozí text (to dělá fill)
+    await nameInput.clear(); // * Vyčistí hodnotu pole, používá se jenom při použití pressSequentially, při fill není potřeba (ten to vymaže sám)
+    await nameInput.pressSequentially("Dlouhý text...", { delay: 200 }); // * Když chci zpomalit zadávání znaků v poli
   });
 
   test("select option", async ({ page }) => {
@@ -29,7 +29,7 @@ test.describe("Forms Actions", () => {
   });
 
   test("Date fill with date ISO 8601", async ({ page }) => {
-    await page.locator("#date-of-birth").fill("1999-05-30"); // ? <input> type = "date" je vždy nutné vyplnit ve formátu ISO 8601: YYYY-MM-DD
+    await page.locator("#date-of-birth").fill("1999-05-30"); // ? <input> type = "date" je vždy nutné vyplnit ve standardizovaném formátu ISO 8601: YYYY-MM-DD
   });
 
   test("File Upload", async ({ page }) => {
