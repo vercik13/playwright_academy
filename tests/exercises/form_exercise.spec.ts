@@ -1,0 +1,28 @@
+import { test } from "@playwright/test";
+
+test.describe("Forms Actions Exercises", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("https://tredgate.com/webtrain/contact.html");
+  });
+
+  test("Fill Inputs", async ({ page }) => {
+    const fullNameInput = page.locator("#full-name");
+    await fullNameInput.fill("Veronika Vokounová");
+    const emailInput = page.locator("#email");
+    await emailInput.fill("vero.vokounova@gmail.com");
+  });
+
+  test("Date fill with date ISO 8601 - Contact Date", async ({ page }) => {
+    await page.locator("#contact-date").fill("1999-05-30"); // ? <input> type = "date" je vždy nutné vyplnit ve formátu ISO 8601: YYYY-MM-DD
+  });
+
+  test("Select Option", async ({ page }) => {
+    const roleSelect = page.locator("#role");
+    await roleSelect.selectOption("instructor");
+  });
+
+  test("Click checkbox and submit", async ({ page }) => {
+    await page.locator('[data-testid="checkbox-newsletter"]').check();
+    await page.locator('[data-testid="button-submit"]').click();
+  });
+});
