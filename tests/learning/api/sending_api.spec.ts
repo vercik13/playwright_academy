@@ -35,3 +35,5 @@ test("POST Request with JSON Body", async ({ request }) => {
     }
   );
 });
+
+// ? GET požadavek by neměl obsahovat Body, to by měl mít požadvavek POST
