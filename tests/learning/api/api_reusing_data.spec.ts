@@ -1,7 +1,7 @@
 // tests/learning/api/
 // api_reusing_data.spec.ts
 
-import { test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { faker } from "@faker-js/faker";
 
 test("Reusing Data Between API Requests", async ({ request }) => {
@@ -23,9 +23,24 @@ test("Reusing Data Between API Requests", async ({ request }) => {
   const registerResponseBody = await registerResponse.json();
   userId = registerResponseBody.userId;
 
-  await request.get("https://tegb-backend-877a0b063d29.herokuapp.com/eshop", {
-    params: {
-      userId,
-    },
-  });
+  const userResponse = await request.get(
+    "https://tegb-backend-877a0b063d29.herokuapp.com/eshop",
+    {
+      params: {
+        userId,
+      },
+    }
+  );
+
+  const userResponseBody = await userResponse.json();
+
+  expect(
+    userResponseBody.username,
+    "userResponseBody.username should have value"
+  ).toBe(username);
+
+  expect(
+    userResponseBody.email,
+    "userResponseBody.email should have value"
+  ).toBe(email);
 });
