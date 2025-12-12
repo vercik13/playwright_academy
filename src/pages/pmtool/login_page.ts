@@ -59,4 +59,11 @@ export class LoginPage {
     await expect(this.pageHeader).toHaveText(headerText);
     return this;
   }
+
+  async loginVisualCheck(): Promise<this> {
+    await expect(this.page).toHaveScreenshot("login_visual_check.png", {
+      fullPage: true,
+    });
+    return this;
+  }
 }
